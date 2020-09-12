@@ -14,5 +14,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Authenticate to the Github Packages/Container Registry
+      run: cat ~/GH_TOKEN.txt | docker login docker.pkg.github.com -u Francommit --password-stdin
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run: docker build . --file Dockerfile --tag docker.pkg.github.com/francommit/go_learning/my-image-name:$(date +%s)
+    - name: Push the latest Docker image
+      run: docker push docker.pkg.github.com/francommit/go_learning/my-image-name:$(date +%s)
