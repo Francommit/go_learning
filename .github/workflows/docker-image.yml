@@ -15,8 +15,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Build & Push image
-      run: docker build . --file Dockerfile --tag 
+    - name: Build Image
+      run: docker build . --file Dockerfile --tag
+       
+    - name: Push Image
       run: |
         echo "${{ github.token }}" | docker login https://docker.pkg.github.com -u ${GITHUB_ACTOR} --password-stdin
         docker build -t docker.pkg.github.com/${GITHUB_REPOSITORY}/go_learning/my-image-name:$(date +%s) .
