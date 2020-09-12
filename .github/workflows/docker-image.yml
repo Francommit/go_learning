@@ -21,4 +21,4 @@ jobs:
     - name: Push Image
       run: |
         echo "${{ github.token }}" | docker login https://docker.pkg.github.com -u ${GITHUB_ACTOR} --password-stdin
-        docker push docker.pkg.github.com/${GITHUB_REPOSITORY}/go_learning/my-image-name:$(date +%s)
+        docker push docker.pkg.github.com/francommit/go_learning/my-image-name:$(date +%s)
