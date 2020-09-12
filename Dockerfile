@@ -2,5 +2,5 @@ FROM golang:alpine
 
 ENV CGO_ENABLED 0
 
-ADD .
+COPY hello.go .
 RUN go run hello.go
