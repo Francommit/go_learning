@@ -18,7 +18,8 @@ jobs:
     - name: Build Image
       run: docker build . --file Dockerfile --tag docker.pkg.github.com/francommit/go_learning/hello_world
 
-    - name: Push Image
-      run: |
-        echo "${{ github.token }}" | docker login https://docker.pkg.github.com -u ${GITHUB_ACTOR} --password-stdin
-        docker push docker.pkg.github.com/francommit/go_learning/hello_world:latest
+    - name: Login
+      run: echo "${{ github.token }}" | docker login https://docker.pkg.github.com -u ${GITHUB_ACTOR} --password-stdin
+
+    - name: Push
+      run: docker push docker.pkg.github.com/francommit/go_learning/hello_world:latest
