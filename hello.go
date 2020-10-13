@@ -10,3 +10,5 @@ func basicSyntax() {
 	var variableName string = "Hello World!"
 	fmt.Println(variableName)
 }
+
+# test
